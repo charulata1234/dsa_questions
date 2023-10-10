@@ -7,8 +7,8 @@ class Solution {
         int ans = 0;
         for(String s: words) {
             Map<Character, Integer> count = new HashMap<>();
-            int i = 0;
-            for(; i<s.length(); i++) {
+            int i=0;
+            for( ; i<s.length(); i++) {
                 char c = s.charAt(i);
                 if(map.containsKey(c)) {
                     if(count.containsKey(c) && count.get(c) + 1 > map.get(c))
@@ -17,7 +17,7 @@ class Solution {
                 } else
                     break;
             }
-            if(i == s.length())
+            if( i == s.length())
                 ans += s.length();
         }
         
