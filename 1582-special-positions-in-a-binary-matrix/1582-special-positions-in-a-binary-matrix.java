@@ -1,6 +1,6 @@
 class Solution {
     public int numSpecial(int[][] mat) {
-        int count=0;
+        int specialCountNumber=0;
         for(int i=0;i<mat.length;i++){
             for(int j=0;j<mat[0].length;j++){
                 int sumRow=0;
@@ -13,12 +13,12 @@ class Solution {
                         sumCol+=mat[i][k];
                     }
                     if(sumCol+sumRow==2){
-                        count++;
+                        specialCountNumber++;
                     }
 
                 }
             }
         }
-        return count;
+        return specialCountNumber;
     }
 }
