@@ -9,13 +9,13 @@ class Solution {
                 // push the current number and generate the "Push" operation.
                 result.add("Push");
                 result.add("Pop"); // After pushing, immediately pop.
-                current++;
+                current+=1;;
             }
 
             // The current number matches the target number, so push it.
             result.add("Push");
 
-            current++; // Move to the next number to be pushed.
+            current+=1; // Move to the next number to be pushed.
         }
 
         return result;
