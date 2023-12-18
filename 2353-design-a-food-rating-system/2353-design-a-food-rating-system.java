@@ -43,8 +43,10 @@ class FoodRatings {
         Info prev=foodMap.get(food);
         Info curr= new Info(food,prev.cuisine,newRating);
         foodMap.put(food,curr);
+
         prev.food="";
         cuisineMap.get(prev.cuisine).add(curr);
+        prev=null;
              
 
         
