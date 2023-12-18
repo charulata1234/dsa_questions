@@ -60,9 +60,7 @@ class FoodRatings {
    
 }
 
-/**
- * Your FoodRatings object will be instantiated and called as such:
- * FoodRatings obj = new FoodRatings(class FoodRatings {
+/**class FoodRatings {
     public class Info{
         String food;
         String cuisine;
@@ -122,7 +120,9 @@ class FoodRatings {
         
     }
    
-}foods, cuisines, ratings);
+}
+ * Your FoodRatings object will be instantiated and called as such:
+ * FoodRatings obj = new FoodRatings(foods, cuisines, ratings);
  * obj.changeRating(food,newRating);
  * String param_2 = obj.highestRated(cuisine);
  */
