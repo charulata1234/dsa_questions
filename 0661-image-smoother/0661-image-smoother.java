@@ -1,55 +1,55 @@
 class Solution {
     public int[][] imageSmoother(int[][] img) {
-        int m=img.length;
-        int n=img[0].length;
-        int [][]  ans = new int [m][n];
-       for(int i=0;i<m;i++){
+        int rows=img.length;
+        int col=img[0].length;
+        int [][]  ans = new int [rows][col];
+       for(int i=0;i<rows;i++){
            
-           for(int j=0;j<n;j++){
+           for(int j=0;j<col;j++){
                int sum =0;
-               int c=1;
+               int countNearbyCells=1;
                sum+=img[i][j];
                
                if(isValid(img,i-1,j-1)){
                     sum+=img[i-1][j-1];
-                    c++;
+                    countNearbyCells++;
                }   
                 if(isValid(img,i,j-1)){
                      sum+=img[i][j-1];
-                     c++;
+                     countNearbyCells++;
                 }
                    
                 if(isValid(img,i+1,j-1)){
                     sum+=img[i+1][j-1];
-                    c++;
+                    countNearbyCells++;
                 }
                     
                 if(isValid(img,i+1,j)){
                      sum+=img[i+1][j];
-                     c++;
+                     countNearbyCells++;
                 }
                    
                 if(isValid(img,i+1,j+1)){
                    sum+=img[i+1][j+1];
-                   c++;
+                   countNearbyCells++;
                 }
                     
                 if(isValid(img,i,j+1)){
                     sum+=img[i][j+1];
-                    c++;
+                    countNearbyCells++;
                 }
                     
                 if(isValid(img,i-1,j+1)){
                      sum+=img[i-1][j+1];
-                     c++;
+                     countNearbyCells++;
                 }
                 if(isValid(img,i-1,j))
                 {
                     sum+=img[i-1][j];
-                    c++;
+                    countNearbyCells++;
                 }
                
-                ans[i][j]=sum/c;
+                ans[i][j]=sum/countNearbyCells;
 
 
            }
@@ -57,9 +57,9 @@ class Solution {
         return ans;
     }
     public boolean isValid(int[][] arr,int i,int j){
-        int m=arr.length;
-        int n=arr[0].length;
-        if(i>=0&&i<m&&j>=0&&j<n)
+        int rows=arr.length;
+        int col=arr[0].length;
+        if(i>=0&&i<rows&&j>=0&&j<col)
             return true;
         return false;
     }
