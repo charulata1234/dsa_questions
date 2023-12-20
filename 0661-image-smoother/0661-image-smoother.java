@@ -9,7 +9,7 @@ class Solution {
                int sum =0;
                int c=1;
                sum+=img[i][j];
-               // top left;
+               
                if(isValid(img,i-1,j-1)){
                     sum+=img[i-1][j-1];
                     c++;
@@ -48,7 +48,7 @@ class Solution {
                     sum+=img[i-1][j];
                     c++;
                 }
-                //   System.out.println(sum+" "+c); 
+               
                 ans[i][j]=sum/c;
 
 
