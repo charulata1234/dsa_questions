@@ -15,14 +15,14 @@
  */
 class Solution {
     public int diameterOfBinaryTree(TreeNode root) {
-        counter(root, 0);
+        counter(root);
         return diameter;
     }
     int diameter = 0;
-    public int counter(TreeNode node, int distance) {
+    public int counter(TreeNode node) {
         if(node == null) return 0;
-        int left = counter(node.left, distance);
-        int right = counter(node.right, distance);
+        int left = counter(node.left);
+        int right = counter(node.right);
         diameter = Math.max(left+right,diameter);
         return Math.max(left, right)+1;
     }
