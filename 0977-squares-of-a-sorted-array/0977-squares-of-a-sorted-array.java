@@ -7,11 +7,13 @@ class Solution {
 
         while(left <= right){
             if(Math.abs(nums[left]) >= Math.abs(nums[right])){
-                result[i--] = nums[left] * nums[left];
+                result[i] = nums[left] * nums[left];
+                i--;
                 left++;
             }
             else{
-                result[i--] = nums[right] * nums[right];
+                result[i] = nums[right] * nums[right];
+                i--;
                 right--;
             }
         }
