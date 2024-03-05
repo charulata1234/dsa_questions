@@ -1,47 +1,50 @@
 class Solution {
-    static int dr[] = { -1, 0, 1, 0 };
-    static int dc[] = { 0, 1, 0, -1 };
+    int[] dx = { -1, 0, 0, 1 };
+    int[] dy = { 0, -1, 1, 0 };
 
-    public static void solve(char[][] board) {
-        int r = board.length;
-        int c = board[0].length;
-
-        int vis[][] = new int[r][c];
-        for (int i = 0; i < r; i++) {
-            Arrays.fill(vis[i], 0);
+    public void solve(char[][] arr) {
+        // observation : O present at the boundary and all the elements connected to the boundary
+        //can not be flipped as it will always have one side which will not be surroundered by X
+        int n = arr.length, m = arr[0].length;
+        // boundaries consist of 1st row,last row,1st col and last col
+        boolean[][] vis = new boolean[n][m];
+        for (int j = 0; j < m; j++) {
+            if (arr[0][j] == 'O') {
+                //1st row
+                dfs(0, j, arr, vis, n, m);
+            }
+            if (arr[n - 1][j] == 'O') {
+                //last row
+                dfs(n - 1, j, arr, vis, n, m);
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            //1st col
+            if (arr[i][0] == 'O') {
+                dfs(i, 0, arr, vis, n, m);
+            }
+            if (arr[i][m - 1] == 'O') {
+                //last col
+                dfs(i, m - 1, arr, vis, n, m);
+            }
         }
 
-        for (int j = 0; j < c; j++) {
-            //top row
-            if (board[0][j] == 'O' && vis[0][j] == 0) dfs(0, j, vis, board, r, c);
-
-            //bottom row
-            if (board[r - 1][j] == 'O' && vis[r - 1][j] == 0) dfs(r - 1, j, vis, board, r, c);
-        }
-
-        for (int i = 0; i < r; i++) {
-            //left col
-            if (board[i][0] == 'O' && vis[i][0] == 0) dfs(i, 0, vis, board, r, c);
-
-            //right col
-            if (board[i][c - 1] == 'O' && vis[i][c - 1] == 0) dfs(i, c - 1, vis, board, r, c);
-        }
-
-        for (int i = 0; i < r; i++) {
-            for (int j = 0; j < c; j++) {
-                if (vis[i][j] == 0 && board[i][j] == 'O') board[i][j] = 'X';
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (arr[i][j] == 'O' && vis[i][j] == false) {
+                    arr[i][j] = 'X';
+                }
             }
         }
     }
 
-    private static void dfs(int row, int col, int[][] vis, char[][] board, int r, int c) {
-        vis[row][col] = 1;
-        for (int i = 0; i <= 3; i++) {
-            int nrow = row + dr[i];
-            int ncol = col + dc[i];
-
-            if (nrow >= 0 && nrow < r && ncol >= 0 && ncol < c && vis[nrow][ncol] == 0 && board[nrow][ncol] == 'O') {
-                dfs(nrow, ncol, vis, board, r, c);
+    void dfs(int i, int j, char[][] arr, boolean[][] vis, int n, int m) {
+        vis[i][j] = true;
+        for (int x = 0; x < 4; x++) {
+            int nrow = i + dx[x];
+            int ncol = j + dy[x];
+            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && vis[nrow][ncol] == false && arr[nrow][ncol] == 'O') {
+                dfs(nrow, ncol, arr, vis, n, m);
             }
         }
     }
