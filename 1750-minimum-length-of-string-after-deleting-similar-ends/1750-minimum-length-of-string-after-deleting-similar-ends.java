@@ -13,7 +13,7 @@ class Solution {
                 j--;
             }
             i++;
-                j--;
+             j--;
         }
         return j-i+1;
     }
