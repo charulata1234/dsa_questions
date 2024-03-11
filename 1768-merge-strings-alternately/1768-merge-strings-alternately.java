@@ -9,12 +9,12 @@ class Solution {
             i++;
             j++;
         }
-        while(j<word1.length()){
-              res=res+word1.charAt(j);
+        while(j<word2.length()){
+              res=res+word2.charAt(j);
             j++;
         }
-        while(i<word2.length()){
-              res=res+word2.charAt(i);
+        while(i<word1.length()){
+              res=res+word1.charAt(i);
             i++;
         }
         return res;
